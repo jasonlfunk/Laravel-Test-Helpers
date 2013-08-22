@@ -1,10 +1,14 @@
 {
-    "name": "way/laravel-test-helpers",
+    "name": "jasonlfunk/laravel-test-helpers",
     "description": "Easier testing in Laravel.",
     "authors": [
         {
             "name": "Jeffrey Way",
             "email": "jeffrey@jeffrey-way.com"
+        },
+        {
+            "name": "Jason Funk",
+            "email": "jason@jasonfunk.net"
         }
     ],
     "require": {

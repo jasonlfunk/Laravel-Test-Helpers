@@ -32,6 +32,17 @@ trait ControllerHelpers {
         );
     }
 
+    protected function assertSee($text, $element = 'body')
+    {
+        $matches = $this->getMatches($text, $element);
+
+        $this->assertGreaterThan(
+            0,
+            count($matches),
+            "Expected to see the text '$text' within a '$element' element."
+        );
+    }
+
     protected function assertNotSee($text, $element = 'body')
     {
         $matches = $this->getMatches($text, $element);
@@ -43,11 +54,29 @@ trait ControllerHelpers {
         );
     }
 
+    protected function assertSeeAttr($attr, $text, $element)
+    {
+        $matches = $this->getMatches($text, $element);
+
+        $this->assertGreaterThan(
+            0,
+            count($matches),
+            "Expected to see the text '$text' within a '$element' element."
+        );
+    }
+
     protected function getMatches($text, $element)
     {
         $crawler = $this->client->getCrawler();
 
         return $crawler->filter("{$element}:contains('{$text}')");
+    }
+
+    protected function getAttrMatches($attr, $text, $element)
+    {
+        $crawler = $this->client->getCrawler();
+
+        return $crawler->filter("{$element}[{$attr}~='{$text}'])");
     }
 
 }
